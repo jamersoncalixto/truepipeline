@@ -96,8 +96,8 @@ const DashboardPreview: React.FC = () => {
       </div>
 
       {/* Decorative Blob Behind */}
-      <div className="absolute -top-10 -right-10 w-72 h-72 bg-brand-600 rounded-full mix-blend-multiply blur-[80px] opacity-20 animate-blob"></div>
-      <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-sky-500 rounded-full mix-blend-multiply blur-[80px] opacity-20 animate-blob animation-delay-2000"></div>
+      <div className="hidden md:block absolute -top-10 -right-10 w-72 h-72 bg-brand-600 rounded-full mix-blend-multiply blur-[80px] opacity-20 animate-blob"></div>
+      <div className="hidden md:block absolute -bottom-10 -left-10 w-72 h-72 bg-sky-500 rounded-full mix-blend-multiply blur-[80px] opacity-20 animate-blob animation-delay-2000"></div>
     </div>
   );
 };

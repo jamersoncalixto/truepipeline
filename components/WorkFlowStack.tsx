@@ -16,7 +16,8 @@ const workflowCards = [
           {[
             { label: 'FB', text: 'New Lead: Sarah Miller', color: 'bg-blue-600' },
             { label: 'IG', text: 'DM from: @creative_studio', color: 'bg-gradient-to-tr from-purple-500 to-pink-500' },
-            { label: 'SMS', text: 'Inquiry: Pricing details?', color: 'bg-green-500' }
+            { label: 'SMS', text: 'Inquiry: Pricing details?', color: 'bg-green-500' },
+            { label: 'IN', text: 'New Connection: Tech CEO', color: 'bg-sky-700' }
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -62,7 +63,7 @@ const workflowCards = [
             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl rounded-tl-none text-xs text-slate-600 dark:text-slate-300 font-medium">
               "Hi Sarah! I saw you were interested in our growth plan. Would you like to see a quick demo tomorrow?"
             </div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               className="bg-brand-600 p-4 rounded-2xl rounded-tr-none text-xs text-white ml-auto max-w-[85%] font-medium shadow-lg shadow-brand-500/10"
@@ -98,7 +99,7 @@ const workflowCards = [
               </div>
             ))}
           </div>
-          <motion.div 
+          <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             className="p-4 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-between border border-green-100 dark:border-green-900/30"
@@ -125,28 +126,28 @@ const workflowCards = [
     visual: (
       <div className="relative w-full h-full flex items-center justify-center py-16 px-6 sm:p-12">
         <div className="w-full max-w-[320px] bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-slate-100 dark:border-slate-700 p-8 flex flex-col gap-6">
-           <div className="flex justify-between items-end">
-              <div>
-                <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Pipeline</div>
-                <div className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">$248,400</div>
-              </div>
-              <div className="text-xs font-black text-green-500">+12.4%</div>
-           </div>
-           <div className="flex items-end gap-2.5 h-32">
-             {[40, 70, 45, 90, 60, 80, 100].map((h, i) => (
-               <motion.div 
-                 key={i}
-                 initial={{ height: 0 }}
-                 whileInView={{ height: `${h}%` }}
-                 transition={{ delay: i * 0.1, duration: 1 }}
-                 className="flex-1 bg-gradient-to-t from-brand-600 to-brand-400 rounded-xl shadow-lg shadow-brand-500/10"
-               />
-             ))}
-           </div>
-           <div className="flex justify-between pt-4 border-t border-slate-50 dark:border-slate-800">
-             <div className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Campaign ROI</div>
-             <div className="text-[9px] font-black text-brand-600 uppercase tracking-tighter">View Report →</div>
-           </div>
+          <div className="flex justify-between items-end">
+            <div>
+              <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Pipeline</div>
+              <div className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">$248,400</div>
+            </div>
+            <div className="text-xs font-black text-green-500">+12.4%</div>
+          </div>
+          <div className="flex items-end gap-2.5 h-32">
+            {[40, 70, 45, 90, 60, 80, 100].map((h, i) => (
+              <motion.div
+                key={i}
+                initial={{ height: 0 }}
+                whileInView={{ height: `${h}%` }}
+                transition={{ delay: i * 0.1, duration: 1 }}
+                className="flex-1 bg-gradient-to-t from-brand-600 to-brand-400 rounded-xl shadow-lg shadow-brand-500/10"
+              />
+            ))}
+          </div>
+          <div className="flex justify-between pt-4 border-t border-slate-50 dark:border-slate-800">
+            <div className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Campaign ROI</div>
+            <div className="text-[9px] font-black text-brand-600 uppercase tracking-tighter">View Report →</div>
+          </div>
         </div>
       </div>
     )
@@ -159,7 +160,7 @@ const WorkFlowStack: React.FC = () => {
       {/* Introduction Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-32 sm:pb-20">
         <div className="text-center flex flex-col items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -167,11 +168,11 @@ const WorkFlowStack: React.FC = () => {
           >
             <Sparkles size={10} /> The Automated Flow
           </motion.div>
-          
+
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8">
             Watch your business <span className="text-brand-600">run itself.</span>
           </h2>
-          
+
           <p className="text-lg sm:text-xl text-slate-500 dark:text-slate-400 leading-relaxed px-4 max-w-2xl font-medium">
             True Pipeline replaces your entire stack with one intelligent, automated ecosystem.
           </p>
@@ -181,15 +182,15 @@ const WorkFlowStack: React.FC = () => {
       {/* Stacking Cards Section */}
       <div className="relative">
         {workflowCards.map((card, index) => (
-          <WorkflowCardSection 
-            key={card.id} 
-            card={card} 
-            index={index} 
+          <WorkflowCardSection
+            key={card.id}
+            card={card}
+            index={index}
             totalCards={workflowCards.length}
           />
         ))}
       </div>
-      
+
       {/* Spacer to allow the final card to scroll off or feel complete */}
       <div className="h-[20vh]" />
     </section>
@@ -198,7 +199,7 @@ const WorkFlowStack: React.FC = () => {
 
 const WorkflowCardSection: React.FC<{ card: any; index: number; totalCards: number }> = ({ card, index, totalCards }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // Track scroll progress of this specific card section
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -206,25 +207,25 @@ const WorkflowCardSection: React.FC<{ card: any; index: number; totalCards: numb
   });
 
   // Calculate scaling for the "receding" effect as next cards come in
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
-  const blur = useTransform(scrollYProgress, [0, 1], ["0px", "4px"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 1]); // Keep opacity solid for better stacking
+  // const blur = useTransform(scrollYProgress, [0, 1], ["0px", "4px"]); // Removed blur for cleaner look
 
   return (
-    <div 
+    <div
       ref={containerRef}
-      className="relative w-full h-[115vh] sm:h-[100vh]"
+      className="relative w-full h-[100vh] flex items-center justify-center sticky top-0"
     >
-      <div className="sticky top-0 w-full h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          style={{ 
-            scale, 
+      <div className="w-full h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <motion.div
+          style={{
+            scale,
             opacity,
-            filter: `blur(${blur})`,
             zIndex: index + 10,
-            marginTop: `${index * 32}px` 
+            marginTop: `${index * 15}px`, // Reduced margin for tighter stack
+            transform: "translateZ(0)" // Force hardware acceleration
           }}
-          className="w-full max-w-6xl h-[720px] sm:h-[650px] bg-white dark:bg-slate-900 rounded-[3rem] sm:rounded-[4rem] border border-slate-100 dark:border-slate-800 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.06)] dark:shadow-none overflow-hidden flex flex-col md:flex-row"
+          className="w-full max-w-6xl h-[70vh] min-h-[500px] max-h-[800px] bg-white dark:bg-slate-900 rounded-[2.5rem] sm:rounded-[3.5rem] border border-slate-100 dark:border-slate-800 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] dark:shadow-none overflow-hidden flex flex-col md:flex-row relative"
         >
           {/* Content Side */}
           <div className="flex-1 p-8 sm:p-12 md:p-20 flex flex-col justify-center">
@@ -243,8 +244,8 @@ const WorkflowCardSection: React.FC<{ card: any; index: number; totalCards: numb
           <div className="flex-1 bg-slate-50/40 dark:bg-slate-800/20 border-t md:border-t-0 md:border-l border-slate-100 dark:border-slate-800 flex items-center justify-center overflow-hidden h-[450px] sm:h-auto">
             <div className="w-full h-full relative">
               <div className={`absolute inset-0 opacity-20 bg-gradient-to-br ${card.gradient} blur-[100px] sm:blur-[140px]`}></div>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 80 }}

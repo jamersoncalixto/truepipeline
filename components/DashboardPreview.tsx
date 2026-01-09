@@ -40,28 +40,28 @@ const StatCard = ({ icon: Icon, label, value, trend, color }: any) => (
 const DashboardPreview: React.FC = () => {
   return (
     <div className="relative mx-auto max-w-5xl transform hover:scale-[1.01] transition-transform duration-500">
-        {/* Glassmorphism Container */}
+      {/* Glassmorphism Container */}
       <div className="relative bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-3xl border border-white/20 dark:border-slate-700/50 shadow-2xl p-6 sm:p-8">
-        
+
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
-            <div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Performance Overview</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400">Real-time pipeline analytics</p>
-            </div>
-            <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700"></div>
-                <div className="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700"></div>
-                <div className="w-3 h-3 rounded-full bg-brand-500"></div>
-            </div>
+          <div>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Performance Overview</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400">Real-time pipeline analytics</p>
+          </div>
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+            <div className="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+            <div className="w-3 h-3 rounded-full bg-brand-500"></div>
+          </div>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <StatCard icon={TrendingUp} label="Total Revenue" value="$124,500" trend="+12.5%" color="bg-brand-600" />
-            <StatCard icon={Users} label="New Leads" value="1,284" trend="+8.2%" color="bg-brand-500" />
-            <StatCard icon={MousePointerClick} label="Conversion" value="3.42%" trend="+1.1%" color="bg-sky-500" />
-            <StatCard icon={DollarSign} label="Pipeline Value" value="$840k" trend="+24%" color="bg-indigo-500" />
+          <StatCard icon={TrendingUp} label="Total Revenue" value="$124,500" trend="+12.5%" color="bg-brand-600" />
+          <StatCard icon={Users} label="New Leads" value="1,284" trend="+8.2%" color="bg-brand-500" />
+          <StatCard icon={MousePointerClick} label="Conversion" value="3.42%" trend="+1.1%" color="bg-sky-500" />
+          <StatCard icon={DollarSign} label="Pipeline Value" value="$840k" trend="+24%" color="bg-indigo-500" />
         </div>
 
         {/* Chart */}
@@ -82,9 +82,9 @@ const DashboardPreview: React.FC = () => {
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} opacity={0.2} />
-              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 12}} dy={10} />
-              <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 12}} />
-              <Tooltip 
+              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 12 }} dy={10} />
+              <YAxis axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 12 }} />
+              <Tooltip
                 contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
                 itemStyle={{ color: '#1e293b' }}
               />
@@ -94,10 +94,10 @@ const DashboardPreview: React.FC = () => {
           </ResponsiveContainer>
         </div>
       </div>
-      
+
       {/* Decorative Blob Behind */}
-      <div className="absolute -top-10 -right-10 w-72 h-72 bg-brand-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
-      <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-sky-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+      <div className="absolute -top-10 -right-10 w-72 h-72 bg-brand-600 rounded-full mix-blend-multiply blur-[80px] opacity-20 animate-blob"></div>
+      <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-sky-500 rounded-full mix-blend-multiply blur-[80px] opacity-20 animate-blob animation-delay-2000"></div>
     </div>
   );
 };

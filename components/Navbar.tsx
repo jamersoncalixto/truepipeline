@@ -49,16 +49,15 @@ const Navbar: React.FC = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 sm:p-6 pointer-events-none">
       <nav
-        className={`pointer-events-auto transition-all duration-300 w-full max-w-5xl rounded-2xl border ${
-          scrolled || isOpen
+        className={`pointer-events-auto transition-all duration-300 w-full max-w-5xl rounded-2xl border ${scrolled || isOpen
             ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-lg border-slate-200/50 dark:border-slate-800/50'
             : 'bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm border-transparent shadow-sm'
-        }`}
+          }`}
       >
         <div className="px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <a 
+            <a
               href="/"
               className="flex-shrink-0 flex items-center gap-2.5 cursor-pointer group"
               onClick={(e) => {
@@ -71,9 +70,9 @@ const Navbar: React.FC = () => {
                 setIsOpen(false);
               }}
             >
-              <img 
-                src="https://i.imgur.com/UdzWq5n.png" 
-                alt="True Pipeline Symbol" 
+              <img
+                src="https://i.imgur.com/UdzWq5n.png"
+                alt="True Pipeline Symbol"
                 className="h-8 w-auto object-contain transform group-hover:scale-110 transition-transform duration-300"
               />
               <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white transition-colors">
@@ -106,8 +105,8 @@ const Navbar: React.FC = () => {
               >
                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-              <a 
-                href="#pricing" 
+              <a
+                href="#pricing"
                 onClick={(e) => handleLinkClick(e, '#pricing')}
                 className="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2 rounded-xl font-medium transition-all shadow-md hover:shadow-brand-500/20 text-sm"
               >
@@ -135,9 +134,8 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-            isOpen ? 'max-h-screen opacity-100 pb-4' : 'max-h-0 opacity-0'
-          }`}
+          className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-screen opacity-100 pb-4' : 'max-h-0 opacity-0'
+            }`}
         >
           <div className="px-4 space-y-1">
             {navItems.map((item) => (
@@ -151,13 +149,13 @@ const Navbar: React.FC = () => {
               </a>
             ))}
             <div className="pt-2">
-                <a
-                 href="#pricing"
-                 onClick={(e) => handleLinkClick(e, '#pricing')}
-                 className="block w-full text-center bg-brand-600 hover:bg-brand-700 text-white px-4 py-2.5 rounded-xl font-bold transition-colors"
-                >
+              <a
+                href="#pricing"
+                onClick={(e) => handleLinkClick(e, '#pricing')}
+                className="block w-full text-center bg-brand-600 hover:bg-brand-700 text-white px-4 py-2.5 rounded-xl font-bold transition-colors"
+              >
                 Start Free Trial
-                </a>
+              </a>
             </div>
           </div>
         </div>

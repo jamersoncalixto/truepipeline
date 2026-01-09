@@ -225,23 +225,23 @@ const WorkflowCardSection: React.FC<{ card: any; index: number; totalCards: numb
             marginTop: `${index * 15}px`, // Reduced margin for tighter stack
             transform: "translateZ(0)" // Force hardware acceleration
           }}
-          className="w-full max-w-6xl h-[85vh] min-h-[800px] md:h-[650px] md:min-h-[600px] md:max-h-[800px] bg-white dark:bg-slate-900 rounded-[2.5rem] sm:rounded-[3.5rem] border border-slate-100 dark:border-slate-800 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] dark:shadow-none overflow-hidden flex flex-col md:flex-row relative"
+          className="w-full max-w-6xl h-[65vh] min-h-[600px] md:h-[650px] md:min-h-[600px] md:max-h-[800px] bg-white dark:bg-slate-900 rounded-[2rem] sm:rounded-[3.5rem] border border-slate-100 dark:border-slate-800 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] dark:shadow-none overflow-hidden flex flex-col md:flex-row relative"
         >
           {/* Content Side */}
-          <div className="flex-1 p-8 sm:p-12 md:p-20 flex flex-col justify-center shrink-0">
+          <div className="flex-1 p-6 sm:p-12 md:p-20 flex flex-col justify-center shrink-0">
             <div className="text-brand-600 font-black text-xs uppercase tracking-[0.3em] mb-4 sm:mb-6">
               {card.eyebrow}
             </div>
-            <h3 className="text-3xl sm:text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 sm:mb-8 tracking-tighter leading-[1.1]">
+            <h3 className="text-3xl sm:text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-4 sm:mb-8 tracking-tighter leading-[1.1]">
               {card.title}
             </h3>
-            <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 leading-relaxed font-medium max-w-md">
+            <p className="text-sm sm:text-lg text-slate-500 dark:text-slate-400 leading-relaxed font-medium max-w-md mb-4 sm:mb-0">
               {card.description}
             </p>
           </div>
 
           {/* Visual/Demo Side */}
-          <div className="flex-1 bg-slate-50/40 dark:bg-slate-800/20 border-t md:border-t-0 md:border-l border-slate-100 dark:border-slate-800 flex items-center justify-center overflow-hidden h-full min-h-[450px]">
+          <div className="flex-1 bg-slate-50/40 dark:bg-slate-800/20 border-t md:border-t-0 md:border-l border-slate-100 dark:border-slate-800 flex items-center justify-center overflow-hidden h-full min-h-[350px]">
             <div className="w-full h-full relative">
               <div className={`absolute inset-0 opacity-20 bg-gradient-to-br ${card.gradient} blur-[100px] sm:blur-[140px]`}></div>
 

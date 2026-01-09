@@ -50,8 +50,8 @@ const Navbar: React.FC = () => {
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 sm:p-6 pointer-events-none">
       <nav
         className={`pointer-events-auto transition-all duration-300 w-full max-w-5xl rounded-2xl border ${scrolled || isOpen
-            ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-lg border-slate-200/50 dark:border-slate-800/50'
-            : 'bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm border-transparent shadow-sm'
+            ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg border-slate-200/50 dark:border-slate-800/50'
+            : 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-transparent shadow-sm'
           }`}
       >
         <div className="px-4 sm:px-6">

@@ -12,6 +12,13 @@ body {
   overflow-x: hidden;
 }
 
+/* Ensure all buttons and interactive elements show a pointer cursor */
+button,
+a,
+[role="button"] {
+  cursor: pointer;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

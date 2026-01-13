@@ -31,17 +31,17 @@ const FAQ: React.FC = () => {
   return (
     <section id="faq" className="py-24 bg-white dark:bg-slate-950">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Fixed Title Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 text-[10px] font-bold uppercase tracking-widest mb-6 border border-brand-100 dark:border-brand-800">
             <HelpCircle size={12} /> Questions & Answers
           </div>
-          
+
           <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6 leading-tight">
             Scaling Business with <span className="text-brand-600">Intelligent Growth.</span>
           </h2>
-          
+
           <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
             Everything you need to know about scaling with True Pipeline. If you have other questions, our team is always ready to help.
           </p>
@@ -50,17 +50,16 @@ const FAQ: React.FC = () => {
         {/* FAQ Accordion */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div 
+            <div
               key={index}
-              className={`group rounded-3xl border transition-all duration-300 ${
-                openIndex === index 
-                  ? 'border-brand-200 dark:border-brand-800 bg-brand-50/30 dark:bg-brand-900/10 shadow-sm' 
+              className={`group rounded-3xl border transition-all duration-300 ${openIndex === index
+                  ? 'border-brand-200 dark:border-brand-800 bg-brand-50/30 dark:bg-brand-900/10 shadow-sm'
                   : 'border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-brand-100 dark:hover:border-brand-900'
-              }`}
+                }`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-6 flex items-center justify-between text-left focus:outline-none"
+                className="w-full px-6 py-6 flex items-center justify-between text-left focus:outline-none cursor-pointer"
               >
                 <span className={`text-lg font-bold transition-colors ${openIndex === index ? 'text-brand-600' : 'text-slate-900 dark:text-slate-100'}`}>
                   {faq.question}
@@ -69,7 +68,7 @@ const FAQ: React.FC = () => {
                   <ChevronDown size={18} />
                 </div>
               </button>
-              
+
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div

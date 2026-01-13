@@ -7,7 +7,7 @@ const workflowCards = [
     id: 1,
     title: "Omni-Channel Lead Capture",
     eyebrow: "Step 01: Capture",
-    description: "Automate lead collection from Facebook, Instagram, SMS, and Email. Every conversation flows into one unified inbox instantly.",
+    description: "Automate lead collection from Facebook, Instagram, LinkedIn, SMS, and Email. Every conversation flows into one unified inbox instantly.",
     icon: MousePointer2,
     gradient: "from-blue-600 to-indigo-600",
     visual: (

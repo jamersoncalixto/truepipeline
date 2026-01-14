@@ -1,17 +1,17 @@
 
 import React, { useState } from 'react';
-import { 
-  Users, 
-  Calendar, 
-  FileText, 
-  Filter, 
-  Globe, 
-  Repeat, 
-  PhoneForwarded, 
-  Mail, 
-  Zap, 
-  BarChart3, 
-  QrCode, 
+import {
+  Users,
+  Calendar,
+  FileText,
+  Filter,
+  Globe,
+  Repeat,
+  PhoneForwarded,
+  Mail,
+  Zap,
+  BarChart3,
+  QrCode,
   Facebook,
   Chrome,
   Star,
@@ -49,35 +49,35 @@ interface PlanData {
 }
 
 const starterFeatures: FeatureItem[] = [
-  { name: 'CRM & Opportunities', icon: Users },
-  { name: 'Calendar & Bookings', icon: Calendar },
-  { name: 'Funnels & Websites', icon: Filter },
-  { name: 'Form & Survey Builder', icon: FileText },
-  { name: '2-Way Text & Email', icon: Repeat },
-  { name: 'Email Marketing', icon: Mail },
-  { name: 'Missed Call Text Back', icon: PhoneForwarded },
-  { name: 'Workflows & Triggers', icon: Zap },
-  { name: 'Full Reporting', icon: BarChart3 },
-  { name: 'QR Codes & Gokollab', icon: QrCode },
+  { name: 'Smart CRM that tracks every opportunity', icon: Users },
+  { name: 'Client booking and calendar sync', icon: Calendar },
+  { name: 'Custom landing pages and funnels', icon: Filter },
+  { name: 'Lead capture forms and surveys', icon: FileText },
+  { name: 'Text and email follow-ups (automated)', icon: Repeat },
+  { name: 'Email campaigns', icon: Mail },
+  { name: 'Missed call recovery', icon: PhoneForwarded },
+  { name: 'Smart automations and workflows', icon: Zap },
+  { name: 'Performance dashboards', icon: BarChart3 },
+  { name: 'QR codes and review links', icon: QrCode },
 ];
 
 const growthFeatures: FeatureItem[] = [
-  { name: 'GMB & FB Messaging', icon: Facebook },
-  { name: 'GMB Call Tracking', icon: Chrome },
-  { name: 'Reputation Management', icon: Star },
-  { name: 'Social Planner', icon: Share2 },
-  { name: 'Campaigns & Documents', icon: Megaphone },
-  { name: 'Trigger Links', icon: Link },
-  { name: 'Invoice & Text to Pay', icon: DollarSign },
-  { name: 'Certificates', icon: Award },
+  { name: 'Google & Facebook message integration', icon: Facebook },
+  { name: 'Google Business call tracking', icon: Chrome },
+  { name: 'Review and reputation management', icon: Star },
+  { name: 'Social media content planner', icon: Share2 },
+  { name: 'Campaign templates and documents', icon: Megaphone },
+  { name: 'Smart trigger links', icon: Link },
+  { name: 'Invoice and payment requests', icon: DollarSign },
+  { name: 'Professional certificates', icon: Award },
 ];
 
 const proFeatures: FeatureItem[] = [
-  { name: 'Memberships & Courses', icon: LayoutDashboard },
-  { name: 'Communities', icon: MessageCircle },
-  { name: 'Blogs', icon: PenTool },
-  { name: 'Quizzes', icon: CheckSquare },
-  { name: 'Affiliate Manager', icon: Network },
+  { name: 'Membership sites and course hosting', icon: LayoutDashboard },
+  { name: 'Private community platform', icon: MessageCircle },
+  { name: 'Blog publishing system', icon: PenTool },
+  { name: 'Custom quizzes and assessments', icon: CheckSquare },
+  { name: 'Affiliate program management', icon: Network },
 ];
 
 const sharedAddons: FeatureItem[] = [
@@ -94,8 +94,8 @@ const growthAddons: FeatureItem[] = [
 
 const plans: PlanData[] = [
   {
-    name: 'Starter',
-    description: 'Solo owners and small businesses getting started with lead capture.',
+    name: 'Launch',
+    description: 'Solo entrepreneurs and new businesses ready to capture and nurture their first leads',
     monthlyPrice: 97,
     annualPrice: 970,
     monthlyLink: 'https://link.fastpaydirect.com/payment-link/694427beb17a074268f96033',
@@ -104,27 +104,27 @@ const plans: PlanData[] = [
     addons: sharedAddons,
   },
   {
-    name: 'Growth',
-    description: 'Growing businesses that need real automation and multi-channel messaging.',
+    name: 'Amplify',
+    description: 'Established businesses scaling up with multi-channel marketing and reputation building',
     monthlyPrice: 197,
     // Fix: removed comma from number literal 1,970 to fix parsing error
     annualPrice: 1970,
     monthlyLink: 'https://link.fastpaydirect.com/payment-link/69446c7cb17a0714abf9dbc1',
     annualLink: 'https://link.fastpaydirect.com/payment-link/69446c86b17a074ea8f9dbd2',
     recommended: true,
-    baseFeatures: 'Everything in Starter, plus',
+    baseFeatures: 'Everything in Launch, plus',
     features: growthFeatures,
     addons: growthAddons,
   },
   {
-    name: 'Pro',
-    description: 'Advanced teams and agencies running scalable operations.',
+    name: 'TRUE',
+    description: 'Growing companies building community, courses, and affiliate programs',
     monthlyPrice: 297,
     // Fix: removed comma from number literal 2,970 to fix parsing error
     annualPrice: 2970,
     monthlyLink: 'https://link.fastpaydirect.com/payment-link/69446c992024d4f91228324c',
     annualLink: 'https://link.fastpaydirect.com/payment-link/69446ca24b824343e1729dba',
-    baseFeatures: 'Everything in Growth, plus',
+    baseFeatures: 'Everything in Amplify, plus',
     features: proFeatures,
     addons: growthAddons,
   },
@@ -148,10 +148,10 @@ const Pricing: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
             Choose Your <span className="text-brand-600">Plan.</span>
           </h2>
-          
+
           <div className="flex items-center justify-center gap-4 mt-8">
             <span className={`text-sm font-bold ${!isAnnual ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>Monthly</span>
-            <button 
+            <button
               onClick={() => setIsAnnual(!isAnnual)}
               className="relative w-14 h-7 bg-slate-200 dark:bg-slate-800 rounded-full p-1 transition-colors focus:outline-none"
             >
@@ -167,11 +167,10 @@ const Pricing: React.FC = () => {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`flex flex-col relative rounded-[2.5rem] p-8 transition-all duration-500 border ${
-                plan.recommended
+              className={`flex flex-col relative rounded-[2.5rem] p-8 transition-all duration-500 border ${plan.recommended
                   ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xl scale-[1.02] z-10'
                   : 'bg-white dark:bg-slate-900/50 text-slate-900 dark:text-slate-100 border-slate-100 dark:border-slate-800 shadow-xl'
-              }`}
+                }`}
             >
               {plan.recommended && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
@@ -208,7 +207,7 @@ const Pricing: React.FC = () => {
                     {plan.baseFeatures}
                   </div>
                 )}
-                
+
                 <ul className="space-y-3.5">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-3">
@@ -226,13 +225,12 @@ const Pricing: React.FC = () => {
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {plan.addons.map((addon, i) => (
-                      <div 
-                        key={i} 
-                        className={`group cursor-default flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold border transition-colors ${
-                          plan.recommended 
-                            ? 'bg-white/5 border-white/10 hover:bg-white/10' 
+                      <div
+                        key={i}
+                        className={`group cursor-default flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold border transition-colors ${plan.recommended
+                            ? 'bg-white/5 border-white/10 hover:bg-white/10'
                             : 'bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-700 hover:border-brand-200'
-                        }`}
+                          }`}
                       >
                         <addon.icon size={10} className={plan.recommended ? 'text-brand-400' : 'text-brand-600'} />
                         {addon.name}
@@ -246,11 +244,10 @@ const Pricing: React.FC = () => {
                 href={isAnnual ? plan.annualLink : plan.monthlyLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full py-5 rounded-2xl font-black text-center text-sm uppercase tracking-widest transition-all transform hover:-translate-y-1 block ${
-                  plan.recommended
+                className={`w-full py-5 rounded-2xl font-black text-center text-sm uppercase tracking-widest transition-all transform hover:-translate-y-1 block ${plan.recommended
                     ? 'bg-brand-600 text-white hover:bg-brand-700 shadow-xl shadow-brand-500/20'
                     : 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90 shadow-lg'
-                }`}
+                  }`}
               >
                 Start Free Trial
               </a>

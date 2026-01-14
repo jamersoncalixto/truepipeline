@@ -93,8 +93,8 @@ const Footer: React.FC = () => {
           <div className="flex flex-col col-span-1 lg:pl-4">
             <h4 className="font-black text-slate-950 dark:text-white mb-6 text-[10px] sm:text-xs uppercase tracking-[0.2em]">{t('footer.legal')}</h4>
             <ul className="space-y-4 text-[12px] sm:text-sm font-bold text-slate-500 dark:text-slate-400">
-              <li><a href="/privacy-policy" onClick={(e) => handleInternalLink(e, '/privacy-policy')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms" onClick={(e) => handleInternalLink(e, '/terms')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Terms of Service</a></li>
+              <li><a href="/privacy-policy" onClick={(e) => handleInternalLink(e, '/privacy-policy')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{t('privacy.title')}</a></li>
+              <li><a href="/terms" onClick={(e) => handleInternalLink(e, '/terms')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{t('terms.title')}</a></li>
             </ul>
           </div>
 

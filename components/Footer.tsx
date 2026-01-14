@@ -144,9 +144,14 @@ const Footer: React.FC = () => {
           <p className="text-[10px] font-black uppercase tracking-[0.1em] text-slate-400 dark:text-slate-600">
             © {currentYear} True Pipeline. {t('footer.rights')}
           </p>
-          <p className="text-[10px] font-black uppercase tracking-[0.1em] text-slate-400 dark:text-slate-600">
+          <a
+            href="https://truep4p.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] font-black uppercase tracking-[0.1em] text-slate-400 dark:text-slate-600 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+          >
             {t('footer.p4p')}
-          </p>
+          </a>
         </div>
       </div>
 

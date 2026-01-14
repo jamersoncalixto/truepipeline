@@ -10,15 +10,7 @@ import {
 } from 'recharts';
 import { TrendingUp, Users, DollarSign, MousePointerClick } from 'lucide-react';
 
-const data = [
-  { name: 'Mon', leads: 40, sales: 24, amt: 2400 },
-  { name: 'Tue', leads: 30, sales: 13, amt: 2210 },
-  { name: 'Wed', leads: 20, sales: 58, amt: 2290 },
-  { name: 'Thu', leads: 27, sales: 39, amt: 2000 },
-  { name: 'Fri', leads: 68, sales: 48, amt: 2181 },
-  { name: 'Sat', leads: 83, sales: 68, amt: 2500 },
-  { name: 'Sun', leads: 94, sales: 73, amt: 2100 },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 const StatCard = ({ icon: Icon, label, value, trend, color, bgColor, iconColor }: any) => (
   <div className="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col gap-2 transition-all duration-300 hover:shadow-md">
@@ -38,6 +30,18 @@ const StatCard = ({ icon: Icon, label, value, trend, color, bgColor, iconColor }
 );
 
 const DashboardPreview: React.FC = () => {
+  const { t } = useLanguage();
+
+  const data = [
+    { name: t('chart.mon'), leads: 40, sales: 24, amt: 2400 },
+    { name: t('chart.tue'), leads: 30, sales: 13, amt: 2210 },
+    { name: t('chart.wed'), leads: 20, sales: 58, amt: 2290 },
+    { name: t('chart.thu'), leads: 27, sales: 39, amt: 2000 },
+    { name: t('chart.fri'), leads: 68, sales: 48, amt: 2181 },
+    { name: t('chart.sat'), leads: 83, sales: 68, amt: 2500 },
+    { name: t('chart.sun'), leads: 94, sales: 73, amt: 2100 },
+  ];
+
   return (
     <div className="relative mx-auto max-w-5xl transform hover:scale-[1.01] transition-transform duration-500">
       {/* Glassmorphism Container */}
@@ -45,9 +49,9 @@ const DashboardPreview: React.FC = () => {
 
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
-          <div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Performance Overview</h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">Real-time pipeline analytics</p>
+          <div className="text-left">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t('dashboard.title')}</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">{t('dashboard.subtitle')}</p>
           </div>
           <div className="flex gap-2">
             <div className="w-2.5 h-2.5 rounded-full bg-slate-200 dark:bg-slate-700"></div>
@@ -60,7 +64,7 @@ const DashboardPreview: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <StatCard
             icon={TrendingUp}
-            label="Total Revenue"
+            label={t('dashboard.stat.revenue')}
             value="$124,500"
             trend="+12.5%"
             bgColor="bg-blue-50 dark:bg-blue-900/20"
@@ -68,7 +72,7 @@ const DashboardPreview: React.FC = () => {
           />
           <StatCard
             icon={Users}
-            label="New Leads"
+            label={t('dashboard.stat.leads')}
             value="1,284"
             trend="+8.2%"
             bgColor="bg-indigo-50 dark:bg-indigo-900/20"
@@ -76,7 +80,7 @@ const DashboardPreview: React.FC = () => {
           />
           <StatCard
             icon={MousePointerClick}
-            label="Conversion"
+            label={t('dashboard.stat.conversion')}
             value="3.42%"
             trend="+1.1%"
             bgColor="bg-sky-50 dark:bg-sky-900/20"
@@ -84,7 +88,7 @@ const DashboardPreview: React.FC = () => {
           />
           <StatCard
             icon={DollarSign}
-            label="Pipeline Value"
+            label={t('dashboard.stat.pipeline')}
             value="$840k"
             trend="+24%"
             bgColor="bg-violet-50 dark:bg-violet-900/20"
@@ -116,8 +120,8 @@ const DashboardPreview: React.FC = () => {
                 contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
                 itemStyle={{ color: '#1e293b' }}
               />
-              <Area type="monotone" dataKey="leads" stroke="#2563eb" strokeWidth={3} fillOpacity={1} fill="url(#colorLeads)" />
-              <Area type="monotone" dataKey="sales" stroke="#0ea5e9" strokeWidth={3} fillOpacity={1} fill="url(#colorSales)" />
+              <Area type="monotone" dataKey="leads" name={t('chart.leads')} stroke="#2563eb" strokeWidth={3} fillOpacity={1} fill="url(#colorLeads)" />
+              <Area type="monotone" dataKey="sales" name={t('chart.sales')} stroke="#0ea5e9" strokeWidth={3} fillOpacity={1} fill="url(#colorSales)" />
             </AreaChart>
           </ResponsiveContainer>
         </div>

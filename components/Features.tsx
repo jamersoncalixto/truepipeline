@@ -1,39 +1,40 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useSpring, useAnimationFrame, useMotionValue } from 'framer-motion';
-import { 
-  MessageCircle, Brain, Calendar, Globe, Mail, BarChart3, 
-  Bot, PhoneIncoming, PhoneOutgoing, QrCode, MessageSquare, 
-  PhoneCall, Link2, ShoppingBag, CreditCard, FileText, 
+import { motion, useAnimationFrame, useMotionValue } from 'framer-motion';
+import {
+  MessageCircle, Brain, Calendar, Globe, Mail, BarChart3,
+  Bot, PhoneIncoming, PhoneOutgoing, QrCode, MessageSquare,
+  PhoneCall, Link2, ShoppingBag, CreditCard, FileText,
   GraduationCap, Layers, Code, Hash, Share2, Star
 } from 'lucide-react';
 import { Feature } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
-const row1Features: Feature[] = [
-  { title: 'Unified Inbox', description: 'SMS, Email, FB, IG, and GMB in one feed.', icon: MessageCircle },
-  { title: 'AI Automation', description: 'Intelligent workflows that nurture leads.', icon: Brain },
-  { title: 'Smart Calendar', description: 'Automated bookings with native reminders.', icon: Calendar },
-  { title: 'Website Builder', description: 'Drag-and-drop high-performance sites.', icon: Globe },
-  { title: 'AI Voice Agents', description: 'Natural human-like voice interaction.', icon: Bot },
-  { title: 'AI Inbound Calls', description: 'Never miss a call with AI answering.', icon: PhoneIncoming },
-  { title: 'AI Outbound Calls', description: 'Proactive follow-ups handled by AI.', icon: PhoneOutgoing },
-  { title: 'QR Code Engine', description: 'Generate smart tracking codes instantly.', icon: QrCode },
-  { title: 'Reputation Manager', description: 'Automate reviews and brand feedback.', icon: Star },
-  { title: 'Social Planner', description: 'Schedule content across all platforms.', icon: Share2 },
+const getRow1Features = (t: (key: string) => string): Feature[] => [
+  { title: t('features.unifiedInbox'), description: t('features.unifiedInbox.desc'), icon: MessageCircle },
+  { title: t('features.aiAutomation'), description: t('features.aiAutomation.desc'), icon: Brain },
+  { title: t('features.smartCalendar'), description: t('features.smartCalendar.desc'), icon: Calendar },
+  { title: t('features.websiteBuilder'), description: t('features.websiteBuilder.desc'), icon: Globe },
+  { title: t('features.aiVoiceAgents'), description: t('features.aiVoiceAgents.desc'), icon: Bot },
+  { title: t('features.aiInboundCalls'), description: t('features.aiInboundCalls.desc'), icon: PhoneIncoming },
+  { title: t('features.aiOutboundCalls'), description: t('features.aiOutboundCalls.desc'), icon: PhoneOutgoing },
+  { title: t('features.qrCodeEngine'), description: t('features.qrCodeEngine.desc'), icon: QrCode },
+  { title: t('features.reputationManager'), description: t('features.reputationManager.desc'), icon: Star },
+  { title: t('features.socialPlanner'), description: t('features.socialPlanner.desc'), icon: Share2 },
 ];
 
-const row2Features: Feature[] = [
-  { title: 'AI Chat Widget', description: 'Convert site visitors with smart chat.', icon: MessageSquare },
-  { title: 'AI Live Call', description: 'Instant voice calls from your website.', icon: PhoneCall },
-  { title: 'Custom Domains', description: 'Manage all brand assets in one portal.', icon: Link2 },
-  { title: 'E-commerce Store', description: 'Sell products with native checkout.', icon: ShoppingBag },
-  { title: 'Payment Gateways', description: 'Stripe, Authorize, and NMI native sync.', icon: CreditCard },
-  { title: 'Document Automation', description: 'AI-powered contracts and proposals.', icon: FileText },
-  { title: 'Advanced Reporting', description: 'Deep attribution and ROI tracking.', icon: BarChart3 },
-  { title: 'Courses & LMS', description: 'Host memberships and video training.', icon: GraduationCap },
-  { title: 'Conversion Funnels', description: 'Multi-step funnels built for scale.', icon: Layers },
-  { title: 'API & Webhooks', description: 'Infinite connectivity for tech teams.', icon: Code },
-  { title: 'Phone Provisioning', description: 'Get local and toll-free numbers.', icon: Hash },
-  { title: '2-Way SMS', description: 'Engage prospects via text marketing.', icon: Mail },
+const getRow2Features = (t: (key: string) => string): Feature[] => [
+  { title: t('features.aiChatWidget'), description: t('features.aiChatWidget.desc'), icon: MessageSquare },
+  { title: t('features.aiLiveCall'), description: t('features.aiLiveCall.desc'), icon: PhoneCall },
+  { title: t('features.customDomains'), description: t('features.customDomains.desc'), icon: Link2 },
+  { title: t('features.ecommerceStore'), description: t('features.ecommerceStore.desc'), icon: ShoppingBag },
+  { title: t('features.paymentGateways'), description: t('features.paymentGateways.desc'), icon: CreditCard },
+  { title: t('features.documentAutomation'), description: t('features.documentAutomation.desc'), icon: FileText },
+  { title: t('features.advancedReporting'), description: t('features.advancedReporting.desc'), icon: BarChart3 },
+  { title: t('features.coursesLMS'), description: t('features.coursesLMS.desc'), icon: GraduationCap },
+  { title: t('features.conversionFunnels'), description: t('features.conversionFunnels.desc'), icon: Layers },
+  { title: t('features.apiWebhooks'), description: t('features.apiWebhooks.desc'), icon: Code },
+  { title: t('features.phoneProvisioning'), description: t('features.phoneProvisioning.desc'), icon: Hash },
+  { title: t('features.2-WaySMS'), description: t('features.twoWaySMS.desc'), icon: Mail },
 ];
 
 const MarqueeRow: React.FC<{ features: Feature[]; direction: number; speed: number }> = ({ features, direction, speed }) => {
@@ -45,11 +46,11 @@ const MarqueeRow: React.FC<{ features: Feature[]; direction: number; speed: numb
     if (containerRef.current) {
       setContainerWidth(containerRef.current.scrollWidth / 2);
     }
-  }, []);
+  }, [features]); // Recalculate when features change (language switch)
 
   useAnimationFrame((t, delta) => {
     let moveBy = direction * speed * (delta / 1000) * 50;
-    
+
     // Smoothly wrap the position for an infinite effect
     let nextX = x.get() + moveBy;
     if (direction === -1 && nextX <= -containerWidth) {
@@ -57,7 +58,7 @@ const MarqueeRow: React.FC<{ features: Feature[]; direction: number; speed: numb
     } else if (direction === 1 && nextX >= 0) {
       nextX -= containerWidth;
     }
-    
+
     x.set(nextX);
   });
 
@@ -91,11 +92,29 @@ const MarqueeRow: React.FC<{ features: Feature[]; direction: number; speed: numb
 };
 
 const Features: React.FC = () => {
+  const { t } = useLanguage();
+  const row1Features = getRow1Features(t);
+  // Fix: Correct key access for row 2
+  const row2Features = [
+    { title: t('features.aiChatWidget'), description: t('features.aiChatWidget.desc'), icon: MessageSquare },
+    { title: t('features.aiLiveCall'), description: t('features.aiLiveCall.desc'), icon: PhoneCall },
+    { title: t('features.customDomains'), description: t('features.customDomains.desc'), icon: Link2 },
+    { title: t('features.ecommerceStore'), description: t('features.ecommerceStore.desc'), icon: ShoppingBag },
+    { title: t('features.paymentGateways'), description: t('features.paymentGateways.desc'), icon: CreditCard },
+    { title: t('features.documentAutomation'), description: t('features.documentAutomation.desc'), icon: FileText },
+    { title: t('features.advancedReporting'), description: t('features.advancedReporting.desc'), icon: BarChart3 },
+    { title: t('features.coursesLMS'), description: t('features.coursesLMS.desc'), icon: GraduationCap },
+    { title: t('features.conversionFunnels'), description: t('features.conversionFunnels.desc'), icon: Layers },
+    { title: t('features.apiWebhooks'), description: t('features.apiWebhooks.desc'), icon: Code },
+    { title: t('features.phoneProvisioning'), description: t('features.phoneProvisioning.desc'), icon: Hash },
+    { title: t('features.twoWaySMS'), description: t('features.twoWaySMS.desc'), icon: Mail },
+  ];
+
   return (
     <section id="features" className="py-24 sm:py-32 bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
       {/* Decorative top border */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
-      
+
       {/* Header Content - z-30 to stay above everything */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30 mb-20 text-center">
         <motion.div
@@ -104,14 +123,14 @@ const Features: React.FC = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-brand-600 dark:text-brand-400 font-black tracking-[0.2em] uppercase text-[10px] sm:text-xs mb-4">
-            The Complete Stack
+            {t('features.badge')}
           </h2>
           <h3 className="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
-            Everything you need. <br className="hidden sm:block" />
-            <span className="text-brand-600">No stitches required.</span>
+            {t('features.title.prefix')} <br className="hidden sm:block" />
+            <span className="text-brand-600">{t('features.title.suffix')}</span>
           </h3>
           <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium">
-            Replace dozens of expensive subscriptions with one unified growth engine. True Pipeline scales with your ambition.
+            {t('features.subtitle')}
           </p>
         </motion.div>
       </div>
@@ -120,7 +139,7 @@ const Features: React.FC = () => {
       <div className="relative flex flex-col gap-4">
         {/* Row 1: Right to Left */}
         <MarqueeRow features={row1Features} direction={-1} speed={0.5} />
-        
+
         {/* Row 2: Left to Right */}
         <MarqueeRow features={row2Features} direction={1} speed={0.5} />
 
@@ -133,5 +152,4 @@ const Features: React.FC = () => {
     </section>
   );
 };
-
 export default Features;

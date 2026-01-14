@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useMotionValue, AnimatePresence } from 'framer-motion';
-import { 
-  Zap, 
-  MessageSquare, 
-  Calendar, 
-  Database, 
-  Mail, 
-  BarChart3, 
-  Globe, 
+import {
+  Zap,
+  MessageSquare,
+  Calendar,
+  Database,
+  Mail,
+  BarChart3,
+  Globe,
   Shield,
   Bot,
   Mic,
@@ -15,19 +15,21 @@ import {
   PhoneForwarded
 } from 'lucide-react';
 
-const carouselFeatures = [
-  { icon: Database, text: "Unified CRM" },
-  { icon: Calendar, text: "Smart Scheduling" },
-  { icon: Mail, text: "Email Automation" },
-  { icon: BarChart3, text: "Real-time Analytics" },
-  { icon: Bot, text: "AI Agents" },
-  { icon: Mic, text: "Voice AI" },
-  { icon: PhoneCall, text: "AI Outbound Calls" },
-  { icon: PhoneForwarded, text: "AI Inbound Calls" },
-  { icon: Zap, text: "AI-Powered Booking" },
-  { icon: MessageSquare, text: "Omni-channel SMS" },
-  { icon: Globe, text: "Sales Funnels" },
-  { icon: Shield, text: "Secure Pipelines" },
+import { useLanguage } from '../context/LanguageContext';
+
+const getCarouselFeatures = (t: (key: string) => string) => [
+  { icon: Database, text: t('carousel.unifiedCRM') },
+  { icon: Calendar, text: t('carousel.smartScheduling') },
+  { icon: Mail, text: t('carousel.emailAutomation') },
+  { icon: BarChart3, text: t('carousel.realtimeAnalytics') },
+  { icon: Bot, text: t('carousel.aiAgents') },
+  { icon: Mic, text: t('carousel.voiceAI') },
+  { icon: PhoneCall, text: t('carousel.aiOutbound') },
+  { icon: PhoneForwarded, text: t('carousel.aiInbound') },
+  { icon: Zap, text: t('carousel.aiBooking') },
+  { icon: MessageSquare, text: t('carousel.omniSMS') },
+  { icon: Globe, text: t('carousel.salesFunnels') },
+  { icon: Shield, text: t('carousel.securePipelines') },
 ];
 
 const FeatureCard: React.FC<{ icon: any, text: string, x: any }> = ({ icon: Icon, text, x }) => {
@@ -41,7 +43,7 @@ const FeatureCard: React.FC<{ icon: any, text: string, x: any }> = ({ icon: Icon
         const centerOfScreen = window.innerWidth / 2;
         const centerOfCard = rect.left + rect.width / 2;
         const distance = Math.abs(centerOfScreen - centerOfCard);
-        
+
         // Adjust threshold to control how many cards look "active" at once
         const threshold = 350;
         if (distance < threshold) {
@@ -57,7 +59,7 @@ const FeatureCard: React.FC<{ icon: any, text: string, x: any }> = ({ icon: Icon
 
   return (
     <div className="relative flex-shrink-0 flex items-center justify-center py-6 px-6">
-      
+
       {/* Connecting line - solid and visible */}
       <div className="absolute top-1/2 left-[-100px] right-[-100px] h-[1.5px] bg-slate-200 dark:bg-slate-800 -translate-y-1/2 z-0" />
 
@@ -72,8 +74,8 @@ const FeatureCard: React.FC<{ icon: any, text: string, x: any }> = ({ icon: Icon
           relative z-30
           bg-white dark:bg-slate-900
           border-[1.5px]
-          ${highlight > 0.4 
-            ? 'border-brand-500 shadow-[0_10px_30px_-5px_rgba(37,99,235,0.2)]' 
+          ${highlight > 0.4
+            ? 'border-brand-500 shadow-[0_10px_30px_-5px_rgba(37,99,235,0.2)]'
             : 'border-slate-100 dark:border-slate-800 shadow-sm'
           }
         `}
@@ -84,7 +86,7 @@ const FeatureCard: React.FC<{ icon: any, text: string, x: any }> = ({ icon: Icon
         {/* Subtle glow when highlighted */}
         <AnimatePresence>
           {highlight > 0.6 && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -95,10 +97,9 @@ const FeatureCard: React.FC<{ icon: any, text: string, x: any }> = ({ icon: Icon
 
         {/* Left node dot */}
         <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 z-40">
-          <div 
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-500 border-2 border-white dark:border-slate-900 shadow-sm ${
-              highlight > 0.4 ? 'bg-brand-600 scale-125' : 'bg-slate-300 dark:bg-slate-700'
-            }`} 
+          <div
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-500 border-2 border-white dark:border-slate-900 shadow-sm ${highlight > 0.4 ? 'bg-brand-600 scale-125' : 'bg-slate-300 dark:bg-slate-700'
+              }`}
           />
         </div>
 
@@ -107,20 +108,18 @@ const FeatureCard: React.FC<{ icon: any, text: string, x: any }> = ({ icon: Icon
           <div className={`${highlight > 0.4 ? 'text-brand-600' : 'text-slate-400'}`}>
             <Icon size={24} strokeWidth={highlight > 0.4 ? 2.5 : 2} />
           </div>
-          
-          <span className={`text-center text-[13px] font-bold tracking-tight transition-all duration-500 whitespace-nowrap ${
-            highlight > 0.4 ? 'text-brand-600' : 'text-slate-500'
-          }`}>
+
+          <span className={`text-center text-[13px] font-bold tracking-tight transition-all duration-500 whitespace-nowrap ${highlight > 0.4 ? 'text-brand-600' : 'text-slate-500'
+            }`}>
             {text}
           </span>
         </div>
 
         {/* Right node dot */}
         <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 z-40">
-          <div 
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-500 border-2 border-white dark:border-slate-900 shadow-sm ${
-              highlight > 0.4 ? 'bg-brand-600 scale-125' : 'bg-slate-300 dark:bg-slate-700'
-            }`} 
+          <div
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-500 border-2 border-white dark:border-slate-900 shadow-sm ${highlight > 0.4 ? 'bg-brand-600 scale-125' : 'bg-slate-300 dark:bg-slate-700'
+              }`}
           />
         </div>
       </div>
@@ -130,6 +129,8 @@ const FeatureCard: React.FC<{ icon: any, text: string, x: any }> = ({ icon: Icon
 
 const FeatureCarousel: React.FC = () => {
   const x = useMotionValue(0);
+  const { t } = useLanguage();
+  const carouselFeatures = getCarouselFeatures(t);
   const itemWidth = 256; // Adjusted based on card width (52*4=208px) + padding/gap
   const loopWidth = carouselFeatures.length * itemWidth;
 
@@ -151,7 +152,7 @@ const FeatureCarousel: React.FC = () => {
           style={{ x }}
         >
           {[...carouselFeatures, ...carouselFeatures, ...carouselFeatures].map((feature, i) => (
-            <FeatureCard 
+            <FeatureCard
               key={i}
               icon={feature.icon}
               text={feature.text}

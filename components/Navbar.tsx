@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 import { useNavigation } from '../App';
+import { useLanguage } from '../context/LanguageContext';
 import { NavItem } from '../types';
-
-const navItems: NavItem[] = [
-  { label: 'Home', href: '#home' },
-  { label: 'Features', href: '#features' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'FAQ', href: '#faq' },
-];
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { path, navigateTo } = useNavigation();
+  const { language, setLanguage, t } = useLanguage();
+
+  const navItems: NavItem[] = [
+    { label: t('nav.home'), href: '#home' },
+    { label: t('nav.features'), href: '#features' },
+    { label: t('nav.pricing'), href: '#pricing' },
+    { label: t('nav.faq'), href: '#faq' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +46,10 @@ const Navbar: React.FC = () => {
         }
       }
     }
+  };
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'es' : 'en');
   };
 
   return (
@@ -99,6 +105,12 @@ const Navbar: React.FC = () => {
             {/* Right Side Buttons */}
             <div className="hidden md:flex items-center gap-3">
               <button
+                onClick={toggleLanguage}
+                className="px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
+              >
+                {language}
+              </button>
+              <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300"
                 aria-label="Toggle Theme"
@@ -110,12 +122,18 @@ const Navbar: React.FC = () => {
                 onClick={(e) => handleLinkClick(e, '#pricing')}
                 className="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2 rounded-xl font-medium transition-all shadow-md hover:shadow-brand-500/20 text-sm"
               >
-                Start Free Trial
+                {t('nav.startTrial')}
               </a>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center gap-3">
+              <button
+                onClick={toggleLanguage}
+                className="px-2 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                {language}
+              </button>
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300"
@@ -154,7 +172,7 @@ const Navbar: React.FC = () => {
                 onClick={(e) => handleLinkClick(e, '#pricing')}
                 className="block w-full text-center bg-brand-600 hover:bg-brand-700 text-white px-4 py-2.5 rounded-xl font-bold transition-colors"
               >
-                Start Free Trial
+                {t('nav.startTrial')}
               </a>
             </div>
           </div>

@@ -10,6 +10,7 @@ import TrialCTA from './components/TrialCTA';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Terms from './components/Terms';
 import { VoiceProvider } from './context/VoiceContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 // Define the navigation context
 interface NavigationContextType {
@@ -72,15 +73,17 @@ const App: React.FC = () => {
 
   return (
     <NavigationContext.Provider value={{ path: currentPath, navigateTo }}>
-      <VoiceProvider>
-        <div className="min-h-screen font-sans selection:bg-brand-500 selection:text-white bg-white dark:bg-slate-950">
-          <Navbar />
-          <main>
-            {renderContent()}
-          </main>
-          <Footer />
-        </div>
-      </VoiceProvider>
+      <LanguageProvider>
+        <VoiceProvider>
+          <div className="min-h-screen font-sans selection:bg-brand-500 selection:text-white bg-white dark:bg-slate-950">
+            <Navbar />
+            <main>
+              {renderContent()}
+            </main>
+            <Footer />
+          </div>
+        </VoiceProvider>
+      </LanguageProvider>
     </NavigationContext.Provider>
   );
 };
